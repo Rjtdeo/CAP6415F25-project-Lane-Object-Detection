@@ -1,0 +1,12 @@
+Week 1 Log
+
+This week I finalized my project idea: combining lane detection with object detection using YOLOv8. 
+I reviewed nuScenes camera data and confirmed that the dataset includes multiple camera views suitable 
+for building a realistic driving pipeline.
+
+Key tasks completed:
+- Set up project repository and base folder structure.
+- Installed required libraries: Ultralytics YOLOv8, PyTorch, NumPy, OpenCV.
+- Explored nuScenes mini dataset and verified image formats.
+- Wrote initial test scripts to load and display camera frames.
+- Planned the overall workflow: data preparation → model training → inference → final video.
