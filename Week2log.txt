@@ -1,0 +1,11 @@
+Week 2 Log
+
+This week focused on building the dataset for YOLO training. I tested several auto-labeling 
+approaches and finalized the pipeline using YOLOv8x for initial annotations.
+
+Key tasks completed:
+- Wrote a script to auto-label images using YOLOv8x.
+- Split data into train/val folders (80/20).
+- Generated YOLO-formatted TXT label files.
+- Created dataset.yaml describing paths and class names.
+- Confirmed dataset quality by visually inspecting sample annotations.
