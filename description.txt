@@ -1,0 +1,7 @@
+Description
+
+This project combines classical computer vision lane detection with a custom-trained YOLOv8n 
+object detector. The system processes real road images from the nuScenes dataset and produces 
+an annotated driving video showing lane boundaries, detected vehicles, pedestrians, traffic 
+lights, and other road objects. The goal of the project is to demonstrate an integrated 
+perception pipeline for autonomous driving use cases.
