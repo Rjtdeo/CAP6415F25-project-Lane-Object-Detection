@@ -1,0 +1,11 @@
+Week 3 Log
+
+I trained the custom YOLOv8n model this week. The goal was to create a lightweight detector 
+capable of real-time inference with road camera footage.
+
+Key tasks completed:
+- Ran training for 40 epochs using the prepared dataset.
+- Monitored loss curves and ensured training converged normally.
+- Verified that the best.pt file was saved correctly.
+- Documented class distribution and training parameters.
+- Began testing inference on individual frames.
