@@ -46,9 +46,7 @@ Lane_Object_Detection_CV/
 
 If anyone wants to retrain the YOLO model:
 
-Run:
-
-    python generate_best_from_nuscenes_multi.py
+Run: python generate_best_from_nuscenes_multi.py
 
 What the script does:
 - Loads all six nuScenes camera folders:
@@ -59,9 +57,7 @@ What the script does:
 - Auto-labels images using YOLOv8x (COCO pretrained)
 - Creates dataset.yaml
 - Trains YOLOv8n for 40 epochs
-- Saves the trained model at:
-
-    C:/Users/Rajat/Downloads/runs/vehicle_detector_multi/weights/best.pt
+- Saves the trained model at: "C:/Users/Rajat/Downloads/runs/vehicle_detector_multi/weights/best.pt"
 
 Training is optional because the repository already provides the final model.
 
@@ -84,10 +80,7 @@ The script will:
 - Perform lane detection (Canny + Hough Transform)
 - Perform object detection using YOLOv8
 - Overlay lanes + bounding boxes + FPS
-- Save an annotated driving video at:
-
-    C:/Users/Rajat/Downloads/output_multi_camera_yolo.mp4
-
+- Save an annotated driving video at: "C:/Users/Rajat/Downloads/output_multi_camera_yolo.mp4"
 - Save sample frames inside the results folder.
 
 
