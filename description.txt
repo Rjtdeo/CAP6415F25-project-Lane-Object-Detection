@@ -1,105 +1,26 @@
-Reproducibility Guide
-=====================
+Description
+===========
 
-This guide explains how to fully reproduce the training process and the final
-lane + object detection output video using the provided code.
+This project aims to build a basic lane and object detection system using a mix
+of classical computer vision and deep learning. I used the nuScenes camera
+images as the input because they contain real road scenes from multiple angles.
 
+For lane detection, I used simple computer vision steps like converting the
+image to grayscale, applying a region of interest, running Canny edge
+detection, and then using the Hough Transform to find straight lane lines. This
+method is not perfect, but it works well enough to highlight the lane
+boundaries.
 
-1. Requirements
-------------------------------------
+For object detection, I trained a YOLOv8n model using auto-labeled images from
+all six nuScenes camera views. The model can detect vehicles, pedestrians,
+traffic lights, and other common road objects. YOLO runs on each frame and
+draws green bounding boxes with labels and confidence values.
 
-Install the required Python libraries:
+Both lane detection and object detection run together in the final inference
+script. All frames from the different camera folders are processed one by one,
+and the script creates a final MP4 video where you can see the detected lanes,
+objects, and FPS information.
 
-    pip install ultralytics opencv-python numpy torch tqdm
-
-Python version used: 3.10+  
-GPU optional (training runs faster if GPU is available).
-
-
-2. Folder Structure
-------------------------------------
-
-Lane_Object_Detection_CV/
-│
-├── code/
-│   ├── train/
-│   │   └── generate_best_from_nuscenes_multi.py
-│   └── inference/
-│       └── part3_infer_and_video_multi.py
-│
-├── results/
-│
-├── README.md
-├── description.txt
-├── documentation.txt
-├── reproducibility.txt
-├── week1log.txt
-├── week2log.txt
-├── week3log.txt
-├── week4log.txt
-├── week5log.txt
-└── requirements.txt
-
-
-3. Training the YOLO Model 
-------------------------------------
-
-If anyone wants to retrain the YOLO model:
-
-Run: python generate_best_from_nuscenes_multi.py
-
-What the script does:
-- Loads all six nuScenes camera folders:
-    CAM_FRONT, CAM_FRONT_LEFT, CAM_FRONT_RIGHT,
-    CAM_BACK, CAM_BACK_LEFT, CAM_BACK_RIGHT
-- Combines them into one dataset
-- Splits images into 80% training / 20% validation
-- Auto-labels images using YOLOv8x (COCO pretrained)
-- Creates dataset.yaml
-- Trains YOLOv8n for 40 epochs
-- Saves the trained model at: "C:/Users/Rajat/Downloads/runs/vehicle_detector_multi/weights/best.pt"
-
-Training is optional because the repository already provides the final model.
-
-
-4. Running the Final Inference Pipeline
-------------------------------------
-
-Update the path inside the script if needed:
-
-In part3_infer_and_video_multi.py:
-
-    WEIGHTS_PATH = r"C:\Users\Rajat\runs\vehicle_detector_multi\weights\best.pt"
-
-Then run:
-
-    python part3_infer_and_video_multi.py
-
-The script will:
-- Load images from all six nuScenes camera folders
-- Perform lane detection (Canny + Hough Transform)
-- Perform object detection using YOLOv8
-- Overlay lanes + bounding boxes + FPS
-- Save an annotated driving video at: "C:/Users/Rajat/Downloads/output_multi_camera_yolo.mp4"
-- Save sample frames inside the results folder.
-
-
-5. Expected Output
-------------------------------------
-
-The reproduced results should include:
-- A full annotated driving video showing:
-    • Lane boundaries  
-    • YOLO object detections (cars, buses, trucks, pedestrians, etc.)  
-    • Real-time FPS text overlay  
-- A results folder containing sample output frames
-
-If the dataset paths are correct and dependencies installed, the full pipeline should run without modification.
-
-
-6. Notes
-------------------------------------
-
-- GPU is recommended but not required.
-- The repository already contains logs, documentation, and descriptions for clarity.
-- This project is fully reproducible using the two Python scripts inside `code/`.
+The goal of this project was to combine two important ADAS components—lane
+detection and object detection—into one simple pipeline and show the results in
+a clear video format.
