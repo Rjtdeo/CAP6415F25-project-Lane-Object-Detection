@@ -175,6 +175,6 @@ train_model.train(
     device=0,   # GPU if available
 )
 
-print("\n🎉 TRAINING COMPLETE!")
-print("Your BEST model is saved at:")
+print("\n TRAINING COMPLETE!")
+print("BEST model is saved at:")
 print(r"C:\Users\Rajat\Downloads\runs\vehicle_detector_multi\weights\best.pt")
