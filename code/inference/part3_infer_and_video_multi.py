@@ -12,7 +12,7 @@ Final full pipeline that uses ALL nuScenes camera folders:
 
 This produces a long video (depends on how many images exist).
 
-What this script does in simple words:
+What this script does :
 1) Reads all images from the 6 camera folders.
 2) Runs basic lane detection using OpenCV.
 3) Runs YOLO object detection using your trained model.
