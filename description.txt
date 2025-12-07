@@ -1,26 +1,38 @@
 Description
 ===========
 
-This project aims to build a basic lane and object detection system using a mix
-of classical computer vision and deep learning. I used the nuScenes camera
-images as the input because they contain real road scenes from multiple angles.
+This project focuses on building a basic lane and object detection system using a combination of classical computer vision and deep learning. The input data comes from nuScenes camera images, which contain real road scenes captured from multiple camera angles around a vehicle. The goal of this project is to show how vision-based techniques can be used as a small but important part of an Advanced Driver Assistance System (ADAS).
 
-For lane detection, I used simple computer vision steps like converting the
-image to grayscale, applying a region of interest, running Canny edge
-detection, and then using the Hough Transform to find straight lane lines. This
-method is not perfect, but it works well enough to highlight the lane
-boundaries.
+For lane detection, simple computer vision methods are used. Each image is first converted to grayscale, then a region of interest is applied to focus on the road area. Canny edge detection is used to find strong edges, and the Hough Transform is applied to detect straight lane lines. These detected lane lines are drawn on the frame to highlight the road boundaries. This method is not perfect, but it works well enough to visually show where the lanes are.
 
-For object detection, I trained a YOLOv8n model using auto-labeled images from
-all six nuScenes camera views. The model can detect vehicles, pedestrians,
-traffic lights, and other common road objects. YOLO runs on each frame and
-draws green bounding boxes with labels and confidence values.
+For object detection, a YOLOv8n deep learning model is trained using auto-labeled images from all six nuScenes camera views. The model is able to detect vehicles, pedestrians, traffic lights, and other common road objects. During inference, YOLO runs on every frame and draws green bounding boxes with class labels and confidence scores.
 
-Both lane detection and object detection run together in the final inference
-script. All frames from the different camera folders are processed one by one,
-and the script creates a final MP4 video where you can see the detected lanes,
-objects, and FPS information.
+Both lane detection and object detection run together in a single pipeline. All camera images are processed one by one, and the final output is an annotated MP4 video that shows detected lanes, detected objects, and FPS information in real time.
 
-The goal of this project was to combine two important ADAS components—lane
-detection and object detection—into one simple pipeline and show the results in
-a clear video format.
+Problem This Project Solves
+
+This project addresses a basic but important problem in autonomous driving and driver assistance: understanding the road environment using only camera input. By detecting lanes and surrounding objects, the system helps give awareness of where the vehicle should stay and what obstacles are present. In real vehicles, this kind of vision system supports features like lane keeping, forward collision warning, and traffic signal detection.
+
+Although real ADAS systems use multiple sensors like cameras, radar, and LiDAR, this project focuses only on the camera-based perception part, which is a key building block of modern ADAS technology.
+
+How This Helps Drivers and Road Safety
+
+This system helps improve safety by visually identifying lanes and nearby vehicles, which reduces the risk of lane drifting and collisions. In real-world systems, such detection helps drivers stay focused, provides warnings when distractions happen, and assists in maintaining safe driving behavior. While this project is a simplified version, it demonstrates the same core idea used in real commercial ADAS systems to help reduce accidents.
+
+Future Work
+
+This project can be extended in many ways. Future improvements can include:
+
+Adding lane curvature detection and lane departure warning
+
+Improving object tracking across frames
+
+Integrating radar or LiDAR data for sensor fusion
+
+Adding distance estimation for detected vehicles
+
+Implementing automatic braking or collision avoidance logic
+
+Running the system in real time using live camera input or driving simulators like CARLA
+
+Overall, this project represents a small but important step toward building more complete and intelligent ADAS and autonomous driving systems.
